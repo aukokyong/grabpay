@@ -36,4 +36,13 @@ app.use("/user", userController);
 const sessionController = require("./controllers/SessionController");
 app.use("/session", sessionController);
 
+const BalanceController = require("./controllers/BalanceController");
+app.use("/balance", BalanceController);
+
+const TransferController = require("./controllers/TransferController");
+app.use("/transfer", TransferController);
+
+const TransactionController = require("./controllers/TransactionController");
+app.use("/transfer", TransactionController);
+
 app.listen(process.env.PORT || 4000);

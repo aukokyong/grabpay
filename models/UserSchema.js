@@ -5,7 +5,7 @@ const UserSchema = new Schema(
   {
     username: { type: Number, required: true, unique: true },
     password: { type: String, required: true },
-    balance: { type: Number, default: 0 },
+    accountBalance: { type: Number, default: 0 },
   },
   {
     timestamps: true,
