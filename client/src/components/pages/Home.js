@@ -7,7 +7,6 @@ const Home = (props) => {
   const [form, setForm] = useState("login");
 
   const handleClick = (event) => {
-    console.log(event.target.name);
     setForm(event.target.name);
   };
 
@@ -31,7 +30,10 @@ const Home = (props) => {
             </Button>
           </Row>
           <Row className="justify-content-center">
-            <LoginForm setIsloggedin={props.setIsloggedin} />
+            <LoginForm
+              setIsloggedin={props.setIsloggedin}
+              setUserInfo={props.setUserInfo}
+            />
           </Row>
         </>
       ) : (
@@ -48,7 +50,10 @@ const Home = (props) => {
             </Button>
           </Row>
           <Row className="justify-content-center">
-            <SignupForm setIsloggedin={props.setIsloggedin} />
+            <SignupForm
+              setIsloggedin={props.setIsloggedin}
+              setUserInfo={props.setUserInfo}
+            />
           </Row>
         </>
       )}

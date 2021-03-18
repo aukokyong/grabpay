@@ -4,18 +4,18 @@ import Summary from "../pages/Summary";
 import Transaction from "../pages/Transaction";
 import Transfer from "../pages/Transfer";
 
-const Routes = () => {
+const Routes = (props) => {
   return (
     <>
       <Switch>
-        <Route path="/summary">
-          <Summary />
+        <Route path="/" exact>
+          <Summary userInfo={props.userInfo} />
         </Route>
-        <Route path="/transaction">
-          <Transaction />
+        <Route path="/transaction" exact>
+          <Transaction userInfo={props.userInfo} />
         </Route>
-        <Route path="/transfer">
-          <Transfer />
+        <Route path="/transfer" exact>
+          <Transfer userInfo={props.userInfo} />
         </Route>
       </Switch>
     </>

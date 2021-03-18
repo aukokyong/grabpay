@@ -1,21 +1,18 @@
 import { Navbar, Nav, Button } from "react-bootstrap";
-// import { useState } from "react";
+import { useState } from "react";
 import axios from "axios";
-// import { Redirect } from "react-router-dom";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 
 const Navibar = (props) => {
-  // const [isLogout, setIslogout] = useState(false);
+  const [isLogoutBtnClicked, setIsLogoutBtnClicked] = useState(false);
 
   const handleLogout = (event) => {
     event.preventDefault();
-    console.log("clicked");
-
+    setIsLogoutBtnClicked(true);
     axios
       .delete("/session")
       .then((response) => {
         console.log(response);
-        // setIslogout(true);
         props.setIsloggedin(false);
       })
       .catch((err) => {
@@ -23,18 +20,18 @@ const Navibar = (props) => {
       });
   };
 
-  // if (isLogout) {
-  //   <Redirect to="/" />;
-  // }
+  if (isLogoutBtnClicked) {
+    return <Redirect to="/" />;
+  }
 
   return (
     <>
       <Navbar bg="success" variant="dark">
-        <Navbar.Brand as={Link} to="/summary">
+        <Navbar.Brand as={Link} to="/">
           GrabPay
         </Navbar.Brand>
         <Nav className="mr-auto">
-          <Nav.Link as={Link} to="/summary">
+          <Nav.Link as={Link} to="/">
             Summary
           </Nav.Link>
           <Nav.Link as={Link} to="/transaction">

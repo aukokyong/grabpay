@@ -23,6 +23,25 @@ const SignupForm = (props) => {
       })
       .catch((error) => {
         console.log(error.response);
+      })
+      .then((res) => {
+        redirectToNextPage();
+      });
+  };
+
+  const redirectToNextPage = () => {
+    axios
+      .post("/session", formData)
+      .then((response) => {
+        // console.log(response);
+        props.setIsloggedin(true);
+        props.setUserInfo(response.data);
+      })
+      .catch((error) => {
+        // console.log(error.response.data);
+        setErrorMsg((state) => {
+          return { ...state, ...error.response.data };
+        });
       });
   };
 
@@ -32,7 +51,7 @@ const SignupForm = (props) => {
         <h1>Sign Up</h1>
       </Row>
       <form>
-        <Row className="justify-content-center mb-1">
+        <Row className="justify-content-center mb-3">
           Username:
           <input
             name="username"
@@ -41,10 +60,10 @@ const SignupForm = (props) => {
             onChange={handleChange}
           ></input>
         </Row>
-        <Row className="justify-content-center">
+        <Row className="justify-content-center mb-3">
           <p>{errorMsg.msg}</p>
         </Row>
-        <Row className="justify-content-center mb-3">
+        <Row className="justify-content-center mb-5">
           Password:
           <input
             type="password"

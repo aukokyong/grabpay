@@ -3,12 +3,15 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import Navibar from "./components/layout/Navibar";
 import Routes from "./components/routes/Routes";
-import { BrowserRouter as Router } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
 
 function App() {
   const [isLoggedin, setIsloggedin] = useState(false);
+  const [userInfo, setUserInfo] = useState("No info");
+
+  console.log(userInfo);
 
   useEffect(() => {
     axios
@@ -29,10 +32,16 @@ function App() {
         {isLoggedin ? (
           <>
             <Navibar setIsloggedin={setIsloggedin} />
-            <Routes />
+            <Routes userInfo={userInfo} />
           </>
         ) : (
-          <Home setIsloggedin={setIsloggedin} />
+          <>
+            <Switch>
+              <Route path="/" exact>
+                <Home setIsloggedin={setIsloggedin} setUserInfo={setUserInfo} />
+              </Route>
+            </Switch>
+          </>
         )}
       </Router>
     </>

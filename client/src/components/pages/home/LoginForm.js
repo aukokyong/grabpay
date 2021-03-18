@@ -16,17 +16,16 @@ const LoginForm = (props) => {
 
   const handleClick = (event) => {
     event.preventDefault();
-    console.log("clicked");
 
     axios
       .post("/session", formData)
       .then((response) => {
-        console.log(response);
-
+        // console.log(response);
         props.setIsloggedin(true);
+        props.setUserInfo(response.data);
       })
       .catch((error) => {
-        console.log(error.response.data);
+        // console.log(error.response.data);
         setErrorMsg((state) => {
           return { ...state, ...error.response.data };
         });
