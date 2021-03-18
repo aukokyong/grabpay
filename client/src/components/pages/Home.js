@@ -1,9 +1,9 @@
 import { useState } from "react";
-import LoginForm from "./Home/LoginForm";
-import SignupForm from "./Home/SignupForm";
-import { Container, Row, Button, Col } from "react-bootstrap";
+import LoginForm from "./home/LoginForm";
+import SignupForm from "./home/SignupForm";
+import { Container, Row, Button } from "react-bootstrap";
 
-const Home = () => {
+const Home = (props) => {
   const [form, setForm] = useState("login");
 
   const handleClick = (event) => {
@@ -13,14 +13,15 @@ const Home = () => {
 
   return (
     <Container>
-      <Row className="justify-content-sm-center mb-5">
+      <Row className="justify-content-center mb-5">
         <h1>Welcome to GrabPay</h1>
       </Row>
 
       {form === "login" ? (
         <>
-          <Row className="justify-content-sm-center mb-5">
+          <Row className="justify-content-center mb-5">
             <Button
+              variant="success"
               onClick={(e) => {
                 handleClick(e);
               }}
@@ -29,14 +30,15 @@ const Home = () => {
               Click to Sign Up
             </Button>
           </Row>
-          <Row className="justify-content-sm-center">
-            <LoginForm />
+          <Row className="justify-content-center">
+            <LoginForm setIsloggedin={props.setIsloggedin} />
           </Row>
         </>
       ) : (
         <>
-          <Row className="justify-content-sm-center mb-5">
+          <Row className="justify-content-center mb-5">
             <Button
+              variant="success"
               onClick={(e) => {
                 handleClick(e);
               }}
@@ -45,8 +47,8 @@ const Home = () => {
               Click to Login
             </Button>
           </Row>
-          <Row className="justify-content-sm-center">
-            <SignupForm />
+          <Row className="justify-content-center">
+            <SignupForm setIsloggedin={props.setIsloggedin} />
           </Row>
         </>
       )}
