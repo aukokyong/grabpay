@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Home from "../pages/Home";
-import Summary from "../pages/Summary";
+import Balance from "../pages/Balance";
 import Transaction from "../pages/Transaction";
 import Transfer from "../pages/Transfer";
 
@@ -9,7 +9,7 @@ const Routes = (props) => {
     <>
       <Switch>
         <Route path="/" exact>
-          <Summary userInfo={props.userInfo} />
+          <Balance userInfo={props.userInfo} />
         </Route>
         <Route path="/transaction" exact>
           <Transaction userInfo={props.userInfo} />

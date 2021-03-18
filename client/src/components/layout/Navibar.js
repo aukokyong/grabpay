@@ -32,10 +32,10 @@ const Navibar = (props) => {
         </Navbar.Brand>
         <Nav className="mr-auto">
           <Nav.Link as={Link} to="/">
-            Summary
+            Balance
           </Nav.Link>
           <Nav.Link as={Link} to="/transaction">
-            Transaction History
+            Transaction
           </Nav.Link>
           <Nav.Link as={Link} to="/transfer">
             Transfer
