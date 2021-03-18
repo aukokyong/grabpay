@@ -26,11 +26,11 @@ app.use(
   session({
     secret: process.env.SECRET,
     resave: false,
-    saveUninitialized: false,
+    saveUninitialized: true,
   })
 );
 
-const userController = require("./controllers/UsersController");
+const userController = require("./controllers/UserController");
 app.use("/user", userController);
 
 const sessionController = require("./controllers/SessionController");
