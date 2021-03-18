@@ -1,13 +1,13 @@
 const express = require("express");
 const router = express.Router();
-const Users = require("../models/UserSchema");
+const User = require("../models/UserSchema");
 const bcrypt = require("bcrypt");
 
 // user logging in
 router.post("/", (req, res) => {
   const filter = { username: req.body.username };
   //check database
-  Users.findOne(filter, (err, foundUser) => {
+  User.findOne(filter, (err, foundUser) => {
     if (err) {
       console.log(err);
       res.status(500).send({ database: "Database error" });
