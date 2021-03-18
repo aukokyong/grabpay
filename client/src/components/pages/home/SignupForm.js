@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { Container, Row, Button } from "react-bootstrap";
 import axios from "axios";
-import { response } from "express";
 
 const SignupForm = (props) => {
   const [formData, setFormData] = useState({ username: "", password: "" });
