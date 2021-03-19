@@ -10,7 +10,7 @@ router.get("/", (req, res) => {
 router.post("/new", (req, res) => {
   User.findOne({ username: req.body.username }, (err, user) => {
     if (user) {
-      return res.send("Username Taken");
+      return res.status(401).send("Username Taken");
     } else {
       req.body.password = bcrypt.hashSync(
         req.body.password,
@@ -21,7 +21,7 @@ router.post("/new", (req, res) => {
           res.status(500).send("Database error");
         } else {
           console.log("User created");
-          res.status(200).send(user);
+          res.status(200).send("success");
         }
       });
     }
