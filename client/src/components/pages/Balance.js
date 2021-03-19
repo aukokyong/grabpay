@@ -3,14 +3,13 @@ import { useState, useEffect } from "react";
 
 const Balance = (props) => {
   // console.log(props);
-
   const [accountBalance, setAccountBalance] = useState(0);
 
   useEffect(() => {
     axios
-      .post("/balance", { _id: props.userInfo._id })
+      .get("/balance/" + props.userInfo._id)
       .then((response) => {
-        // console.log(response.data);
+        console.log(response.data);
         setAccountBalance(
           (response.data.accountBalance_cents / 100).toFixed(2)
         );
