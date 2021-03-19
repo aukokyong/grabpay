@@ -5,6 +5,7 @@ import axios from "axios";
 const SignupForm = (props) => {
   const [formData, setFormData] = useState({ username: "", password: "" });
   const [errorMsg, setErrorMsg] = useState({ msg: "" });
+  const [isAccCreated, setIsAccCreated] = useState("");
 
   const handleChange = (event) => {
     setFormData((state) => {
@@ -19,29 +20,17 @@ const SignupForm = (props) => {
     axios
       .post("/user/new", formData)
       .then((response) => {
-        setErrorMsg({ msg: response.data });
+        console.log(response.data);
+        if (response.data == "success") {
+          setFormData({ username: "", password: "" });
+          setIsAccCreated("Account created successfully. Please login now.");
+        }
       })
       .catch((error) => {
         console.log(error.response);
-      })
-      .then((res) => {
-        redirectToNextPage();
-      });
-  };
-
-  const redirectToNextPage = () => {
-    axios
-      .post("/session", formData)
-      .then((response) => {
-        // console.log(response);
-        props.setIsloggedin(true);
-        props.setUserInfo(response.data);
-      })
-      .catch((error) => {
-        // console.log(error.response.data);
-        setErrorMsg((state) => {
-          return { ...state, ...error.response.data };
-        });
+        if (error.response.status == 401) {
+          setErrorMsg({ msg: error.response.data });
+        }
       });
   };
 
@@ -73,7 +62,7 @@ const SignupForm = (props) => {
             onChange={handleChange}
           ></input>
         </Row>
-        <Row className="justify-content-center mb-3">
+        <Row className="justify-content-center mb-5">
           <Button
             type="submit"
             variant="success"
@@ -81,6 +70,9 @@ const SignupForm = (props) => {
           >
             Sign Up
           </Button>
+        </Row>
+        <Row className="justify-content-center mb-3">
+          <p>{isAccCreated}</p>
         </Row>
       </form>
     </Container>
