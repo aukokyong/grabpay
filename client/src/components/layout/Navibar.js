@@ -31,7 +31,7 @@ const Navibar = (props) => {
           GrabPay
         </Navbar.Brand>
         <Nav className="mr-auto">
-          <Nav.Link as={Link} to="/">
+          <Nav.Link as={Link} to="/balance">
             Balance
           </Nav.Link>
           <Nav.Link as={Link} to="/transaction">
