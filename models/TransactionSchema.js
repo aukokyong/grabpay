@@ -3,9 +3,10 @@ const Schema = mongoose.Schema;
 
 const TransactionSchema = new Schema(
   {
-    userID: { type: String, required: true, unique: true },
-    type: { type: String },
-    amount: { type: Number },
+    creditor: { type: String, required: true }, // person receiving money
+    debtor: { type: String, required: true }, // person receiving money
+    transactionAmount_cents: { type: Number, required: true },
+    description: { type: String, required: true },
   },
   {
     timestamps: true,
