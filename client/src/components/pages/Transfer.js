@@ -91,14 +91,14 @@ const Transfer = (props) => {
           onChange={handleChangeForUsernameField}
         ></input>
       </Row>
-      <Row className="justify-content-center mb-3">
+      <Row className="justify-content-center mb-5">
         <Button
           variant="success"
           onClick={(e) => {
             handleCheck(e);
           }}
         >
-          Check
+          Check Username
         </Button>
       </Row>
 
