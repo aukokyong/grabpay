@@ -8,7 +8,7 @@ const TransactionSchema = new Schema(
     debtorID: { type: String, required: true }, // person sending money
     debtorUsername: { type: String, required: true },
     transactionAmount_cents: { type: Number, required: true },
-    description: { type: String, required: true },
+    description: { type: String },
   },
   {
     timestamps: true,

@@ -43,6 +43,6 @@ const TransferController = require("./controllers/TransferController");
 app.use("/transfer", TransferController);
 
 const TransactionController = require("./controllers/TransactionController");
-app.use("/transfer", TransactionController);
+app.use("/transaction", TransactionController);
 
 app.listen(process.env.PORT || 4000);
