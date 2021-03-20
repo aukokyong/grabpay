@@ -1,4 +1,4 @@
-# grabpay
+# GrabPay
 
 # Introduction
 Grab wants to provide a mobile wallet “GrabPay” service where every user can hold funds in their wallets in SGD.
@@ -29,22 +29,37 @@ Design a new HTTP based GrabPay service which should expose APIs such that users
 <br>
 
 # Design Considerations
+
+## General
 1. Sign up for new users
 2. Login for existing users
 
+## View Balance Page
+1. Display user's account balance
+
+## View Transaction History Page
+1. Display user's transaction history
+2. Allow user to filter based on transaction date/month
+
+## Sending payment
+1. Check if receiver has an account
+2. Allow user to input their description of their transaction
+3. Update user's and receiver's account balance
+
 # Assumptions
-1. Users only use their own phone number when they sign up
+
+## General
+1. User input with expected data types
 
 
 
 # Steps to run application
 1. Install Node.js [https://nodejs.org/en/]
 2. In the main directory, run the following command in the terminal: 
-<br>
+
 a) `npm install`
-<br>
 b) `npm start`
-<br>
+
 This will start up the Express.js server.
 3. Open a new terminal. In the main directory, run the following commands:
 <br>
