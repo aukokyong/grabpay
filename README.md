@@ -53,19 +53,27 @@ Design a new HTTP based GrabPay service which should expose APIs such that users
 
 
 
-# Steps to run application
+# Steps to run application locally with local database
 1. Install Node.js [https://nodejs.org/en/]
-2. Starting up Express.js server.
+2. Install MongoDB [https://docs.mongodb.com/manual/administration/install-community/]
+3. Create a new `.env` file in the main directory. 
+    
+    Add these environment variables into the file:
+    `MONGODB_URI=<mongodb URI>` <br>
+    `SECRET=<secret key>` <br>
+    `PORT=<port>`
 
-In the main directory, run the following command in the terminal: 
+4. Starting up Express.js server.
 
-a) `npm install` <br>
-b) `npm start`
+    In the main directory, run the following command in the terminal: 
 
-3. Starting up React App.
+    a) `npm install` <br>
+    b) `npm run start` <br>
 
-Open a new terminal. In the main directory, run the following commands:
+5. Starting up React App.
 
-a) `cd client` <br>
-b) `npm install` <br>
-c) `npm run start` <br>
+    Open a new terminal. In the main directory, run the following commands:
+
+    a) `cd client` <br>
+    b) `npm install` <br>
+    c) `npm run start` <br>
