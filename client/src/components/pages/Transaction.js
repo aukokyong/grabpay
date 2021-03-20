@@ -28,6 +28,7 @@ const Transaction = (props) => {
         <thead>
           <tr>
             <th>Date</th>
+            <th>Transaction</th>
             <th>Description</th>
             <th>Credit</th>
             <th>Debit</th>

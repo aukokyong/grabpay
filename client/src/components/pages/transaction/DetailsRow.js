@@ -4,6 +4,9 @@ const DetailsRow = (props) => {
   const Debit = () => {
     return (
       <>
+        <td>{props.transaction.createdAt}</td>
+        <td>{props.transaction.creditorUsername}</td>
+        <td>{props.transaction.description}</td>
         <td></td>
         <td>{(props.transaction.transactionAmount_cents / 100).toFixed(2)}</td>
       </>
@@ -13,6 +16,9 @@ const DetailsRow = (props) => {
   const Credit = () => {
     return (
       <>
+        <td>{props.transaction.createdAt}</td>
+        <td>{props.transaction.debtorUsername}</td>
+        <td>{props.transaction.description}</td>
         <td>{(props.transaction.transactionAmount_cents / 100).toFixed(2)}</td>
         <td></td>
       </>
@@ -22,8 +28,6 @@ const DetailsRow = (props) => {
   return (
     <>
       <tr>
-        <td>{props.transaction.createdAt}</td>
-        <td>{props.transaction.description}</td>
         {props.transaction.creditorID === props.currentUser ? (
           <Credit />
         ) : (
