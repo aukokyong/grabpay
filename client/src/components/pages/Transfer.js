@@ -1,13 +1,13 @@
 import { useState } from "react";
 import axios from "axios";
-import { Container, Button, Row } from "react-bootstrap";
+import { Container, Button, Row, Col } from "react-bootstrap";
 import { Redirect } from "react-router-dom";
 
 const Transfer = (props) => {
-  console.log(props);
+  // console.log(props);
 
   const [formData, setFormData] = useState({
-    username: "",
+    creditorUsername: "",
     debtorID: props.userInfo._id,
     debtorUsername: props.userInfo.username,
     transactionAmount_dollars: 0,
@@ -15,9 +15,12 @@ const Transfer = (props) => {
   });
   const [isReceiverValid, setIsReceiverValid] = useState(false);
   const [errorMsg, setErrorMsg] = useState({ user: "" });
-  const [isSuccess, setIsSuccess] = useState(false);
+  const [nextPage, setNextPage] = useState({
+    balance: false,
+    transaction: false,
+  });
 
-  console.log(formData);
+  // console.log(formData);
 
   const handleChangeForUsernameField = (event) => {
     setFormData((state) => {
@@ -37,19 +40,23 @@ const Transfer = (props) => {
     console.log("clicked");
     event.preventDefault();
 
-    axios
-      .post("/transfer/check", { username: formData.username })
-      .then((response) => {
-        console.log(response.data);
-        setIsReceiverValid(response.data);
-      })
-      .catch((error) => {
-        console.log(error.response);
-        if (error.response.status == 401) {
-          setIsReceiverValid(error.response.data.status);
-          setErrorMsg({ user: error.response.data.msg });
-        }
-      });
+    if (formData.creditorUsername === props.userInfo.username) {
+      setErrorMsg({ user: "Unable to send to this account" });
+    } else {
+      axios
+        .post("/transfer/check", { username: formData.creditorUsername })
+        .then((response) => {
+          console.log(response.data);
+          setIsReceiverValid(response.data);
+        })
+        .catch((error) => {
+          console.log(error.response);
+          if (error.response.status == 401) {
+            setIsReceiverValid(error.response.data.status);
+            setErrorMsg({ user: error.response.data.msg });
+          }
+        });
+    }
   };
 
   const handleTransfer = (event) => {
@@ -62,7 +69,7 @@ const Transfer = (props) => {
           console.log(response);
           if (response.data === "success") {
             console.log("success");
-            setIsSuccess(true);
+            setNextPage({ transaction: true });
           }
         })
         .catch((error) => {
@@ -71,22 +78,31 @@ const Transfer = (props) => {
     }
   };
 
-  if (isSuccess) {
+  const handleClickNextPage = (event) => {
+    console.log(event.target.name);
+    setNextPage((state) => {
+      return { ...state, [event.target.name]: true };
+    });
+  };
+  if (nextPage.balance) {
+    return <Redirect to="/balance" />;
+  }
+  if (nextPage.transaction) {
     return <Redirect to="/transaction" />;
   }
 
   return (
     <Container>
       <Row className="justify-content-center mb-5">
-        <h1>Transfer Page</h1>
+        <h1>Send Payment</h1>
       </Row>
 
       <Row className="justify-content-center mb-3">
         Creditor's Username:
         <input
           type="number"
-          name="username"
-          value={formData.username}
+          name="creditorUsername"
+          value={formData.creditorUsername}
           placeholder="Phone Number"
           onChange={handleChangeForUsernameField}
         ></input>
@@ -122,7 +138,7 @@ const Transfer = (props) => {
               onChange={handleChange}
             ></textarea>
           </Row>
-          <Row className="justify-content-center mb-3">
+          <Row className="justify-content-center mb-5">
             <Button
               variant="success"
               onClick={(e) => {
@@ -134,10 +150,33 @@ const Transfer = (props) => {
           </Row>
         </>
       ) : (
-        <Row className="justify-content-center mb-3">
+        <Row className="justify-content-center mb-5">
           <p>{errorMsg.user}</p>
         </Row>
       )}
+
+      <Row className="justify-content-center mb-5 mt-5">
+        <Col sm="auto">
+          <Button
+            name="transaction"
+            onClick={(e) => {
+              handleClickNextPage(e);
+            }}
+          >
+            View Transaction History
+          </Button>
+        </Col>
+        <Col sm="auto">
+          <Button
+            name="transfer"
+            onClick={(e) => {
+              handleClickNextPage(e);
+            }}
+          >
+            Send Payment
+          </Button>
+        </Col>
+      </Row>
     </Container>
   );
 };

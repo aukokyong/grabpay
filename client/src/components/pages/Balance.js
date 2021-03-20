@@ -1,9 +1,15 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
+import { Container, Col, Row, Button } from "react-bootstrap";
+import { Redirect } from "react-router-dom";
 
 const Balance = (props) => {
   // console.log(props);
   const [accountBalance, setAccountBalance] = useState(0);
+  const [nextPage, setNextPage] = useState({
+    transaction: false,
+    transfer: false,
+  });
 
   useEffect(() => {
     axios
@@ -19,12 +25,51 @@ const Balance = (props) => {
       });
   }, []);
 
+  const handleClickNextPage = (event) => {
+    console.log(event.target.name);
+    setNextPage((state) => {
+      return { ...state, [event.target.name]: true };
+    });
+  };
+  if (nextPage.transaction) {
+    return <Redirect to="/transaction" />;
+  }
+  if (nextPage.transfer) {
+    return <Redirect to="/transfer" />;
+  }
+
   return (
-    <>
-      <h1>Balance Page</h1>
-      <h1>Account Balance:</h1>
-      <h1>SGD ${accountBalance}</h1>
-    </>
+    <Container>
+      <Row className="justify-content-center">
+        <h1>Account Balance:</h1>
+      </Row>
+      <Row className="justify-content-center mb-5">
+        <h1>SGD ${accountBalance}</h1>
+      </Row>
+
+      <Row className="justify-content-center mb-5">
+        <Col sm="auto">
+          <Button
+            name="transaction"
+            onClick={(e) => {
+              handleClickNextPage(e);
+            }}
+          >
+            View Transaction History
+          </Button>
+        </Col>
+        <Col sm="auto">
+          <Button
+            name="transfer"
+            onClick={(e) => {
+              handleClickNextPage(e);
+            }}
+          >
+            Send Payment
+          </Button>
+        </Col>
+      </Row>
+    </Container>
   );
 };
 

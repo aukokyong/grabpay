@@ -21,30 +21,33 @@ router.post("/check", (req, res) => {
 
 // Create new transaction data
 router.post("/new", (req, res) => {
-  User.findOne({ username: req.body.username }, (err, getCreditorID) => {
-    if (err) {
-      console.log(err);
-      res.status(500).send({ database: "Database error" });
-    } else {
-      const transactionData = {
-        creditorID: getCreditorID._id,
-        creditorUsername: req.body.username,
-        debtorID: req.body.debtorID,
-        debtorUsername: req.body.debtorUsername,
-        transactionAmount_cents: req.body.transactionAmount_dollars * 100,
-        description: req.body.description,
-      };
+  User.findOne(
+    { username: req.body.creditorUsername },
+    (err, getCreditorID) => {
+      if (err) {
+        console.log(err);
+        res.status(500).send({ database: "Database error" });
+      } else {
+        const transactionData = {
+          creditorID: getCreditorID._id,
+          creditorUsername: req.body.creditorUsername,
+          debtorID: req.body.debtorID,
+          debtorUsername: req.body.debtorUsername,
+          transactionAmount_cents: req.body.transactionAmount_dollars * 100,
+          description: req.body.description,
+        };
 
-      Transaction.create(transactionData, (err, user) => {
-        if (err) {
-          res.status(500).send("Database error");
-        } else {
-          console.log("Transaction created");
-          res.status(200).send("success");
-        }
-      });
+        Transaction.create(transactionData, (err, user) => {
+          if (err) {
+            res.status(500).send("Database error");
+          } else {
+            console.log("Transaction created");
+            res.status(200).send("success");
+          }
+        });
+      }
     }
-  });
+  );
 });
 
 module.exports = router;

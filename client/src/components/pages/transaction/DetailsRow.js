@@ -4,6 +4,7 @@ const DetailsRow = (props) => {
   const Debit = () => {
     return (
       <>
+        <td>{props.index}</td>
         <td>{props.transaction.createdAt}</td>
         <td>{props.transaction.creditorUsername}</td>
         <td>{props.transaction.description}</td>
@@ -16,6 +17,7 @@ const DetailsRow = (props) => {
   const Credit = () => {
     return (
       <>
+        <td>{props.index}</td>
         <td>{props.transaction.createdAt}</td>
         <td>{props.transaction.debtorUsername}</td>
         <td>{props.transaction.description}</td>
