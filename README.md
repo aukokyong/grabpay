@@ -55,18 +55,17 @@ Design a new HTTP based GrabPay service which should expose APIs such that users
 
 # Steps to run application
 1. Install Node.js [https://nodejs.org/en/]
-2. In the main directory, run the following command in the terminal: 
+2. Starting up Express.js server.
 
-a) `npm install`
+In the main directory, run the following command in the terminal: 
+
+a) `npm install` <br>
 b) `npm start`
 
-This will start up the Express.js server.
-3. Open a new terminal. In the main directory, run the following commands:
-<br>
-a) `cd client`
-<br>
-b) `npm install`
-<br>
-c) `npm run start`
-<br>
-This will start up the ReactJS application.
+3. Starting up React App.
+
+Open a new terminal. In the main directory, run the following commands:
+
+a) `cd client` <br>
+b) `npm install` <br>
+c) `npm run start` <br>
