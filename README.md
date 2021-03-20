@@ -58,7 +58,8 @@ Design a new HTTP based GrabPay service which should expose APIs such that users
 2. Install MongoDB [https://docs.mongodb.com/manual/administration/install-community/]
 3. Create a new `.env` file in the main directory. 
     
-    Add these environment variables into the file:
+    Add these environment variables into the file and replace `<value>` with the relevant values:
+
     `MONGODB_URI=<mongodb URI>` <br>
     `SECRET=<secret key>` <br>
     `PORT=<port>`
