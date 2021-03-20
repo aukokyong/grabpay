@@ -5,7 +5,7 @@ const Transaction = require("../models/TransactionSchema");
 router.get("/:id", (req, res) => {
   // res.send(req.params.id);
   const query = {
-    $or: [{ creditor: req.params.id }, { debtor: req.params.id }],
+    $or: [{ creditorID: req.params.id }, { debtorID: req.params.id }],
   };
   Transaction.find(query, (err, doc) => {
     if (err) {

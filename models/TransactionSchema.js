@@ -3,8 +3,8 @@ const Schema = mongoose.Schema;
 
 const TransactionSchema = new Schema(
   {
-    creditor: { type: String, required: true }, // person receiving money
-    debtor: { type: String, required: true }, // person receiving money
+    creditorID: { type: String, required: true }, // person receiving money
+    debtorID: { type: String, required: true }, // person sending money
     transactionAmount_cents: { type: Number, required: true },
     description: { type: String, required: true },
   },

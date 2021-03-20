@@ -1,11 +1,11 @@
 const DetailsRow = (props) => {
-  console.log(props);
+  // console.log(props);
 
   const Debit = () => {
     return (
       <>
         <td></td>
-        <td>{props.transaction.transactionAmount_cents / 100}</td>
+        <td>{(props.transaction.transactionAmount_cents / 100).toFixed(2)}</td>
       </>
     );
   };
@@ -13,7 +13,7 @@ const DetailsRow = (props) => {
   const Credit = () => {
     return (
       <>
-        <td>{props.transaction.transactionAmount_cents / 100}</td>
+        <td>{(props.transaction.transactionAmount_cents / 100).toFixed(2)}</td>
         <td></td>
       </>
     );
@@ -24,7 +24,7 @@ const DetailsRow = (props) => {
       <tr>
         <td>{props.transaction.createdAt}</td>
         <td>{props.transaction.description}</td>
-        {props.transaction.creditor === props.currentUser ? (
+        {props.transaction.creditorID === props.currentUser ? (
           <Credit />
         ) : (
           <Debit />
