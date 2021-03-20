@@ -10,7 +10,7 @@ const Transfer = (props) => {
     creditorUsername: "",
     debtorID: props.userInfo._id,
     debtorUsername: props.userInfo.username,
-    transactionAmount_dollars: 0,
+    transactionAmount_dollars: "",
     description: "",
   });
   const [isReceiverValid, setIsReceiverValid] = useState(false);
@@ -125,6 +125,7 @@ const Transfer = (props) => {
             <input
               type="number"
               name="transactionAmount_dollars"
+              placeholder="Input format: *.xx"
               value={formData.transactionAmount_dollars}
               onChange={handleChange}
             ></input>
