@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Redirect } from "react-router-dom";
 import { Container, Row, Col, Button } from "react-bootstrap";
+import axios from "axios";
 
 const Welcome = (props) => {
   console.log(props);
@@ -10,6 +11,17 @@ const Welcome = (props) => {
     transaction: false,
     transfer: false,
   });
+
+  useEffect(() => {
+    axios
+      .get("/balance/update/" + props.userInfo._id)
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
 
   const handleClickNextPage = (event) => {
     console.log(event.target.name);

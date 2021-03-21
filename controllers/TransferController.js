@@ -42,12 +42,59 @@ router.post("/new", (req, res) => {
             res.status(500).send("Database error");
           } else {
             console.log("Transaction created");
+            console.log(user);
+
+            updateBalance(user.debtorID);
+            updateBalance(user.creditorID);
+
             res.status(200).send("success");
           }
         });
+        // updateBalance(transactionData.creditorID);
       }
     }
   );
 });
+
+const updateBalance = (id) => {
+  Transaction.aggregate()
+    .match({ creditorID: id })
+    .group({
+      _id: null,
+      totalCredit: {
+        $sum: "$transactionAmount_cents",
+      },
+    })
+    .exec((err, credit) => {
+      Transaction.aggregate()
+        .match({ debtorID: id })
+        .group({
+          _id: null,
+          totalDebit: {
+            $sum: "$transactionAmount_cents",
+          },
+        })
+        .exec((err, debit) => {
+          console.log(credit);
+          const totalCredit = credit.length === 0 ? 0 : credit[0].totalCredit;
+          const totalDebit = debit.length === 0 ? 0 : debit[0].totalDebit;
+          console.log(totalCredit - totalDebit);
+          console.log(totalCredit);
+          console.log(totalDebit);
+
+          User.findByIdAndUpdate(
+            { _id: id },
+            {
+              $set: { accountBalance_cents: totalCredit - totalDebit },
+            },
+            (err, userBalance) => {
+              if (err) {
+                console.log(err);
+              }
+            }
+          );
+        });
+    });
+};
 
 module.exports = router;
