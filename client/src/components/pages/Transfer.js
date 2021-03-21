@@ -157,9 +157,10 @@ const Transfer = (props) => {
       )}
 
       <Row className="justify-content-center mb-5 mt-5">
-        <Col sm="auto">
+        <Col xs="auto">
           <Button
             name="transaction"
+            className="mb-3 mt-3"
             onClick={(e) => {
               handleClickNextPage(e);
             }}
@@ -167,9 +168,10 @@ const Transfer = (props) => {
             View Transaction History
           </Button>
         </Col>
-        <Col sm="auto">
+        <Col xs="auto">
           <Button
             name="transfer"
+            className="mb-3 mt-3"
             onClick={(e) => {
               handleClickNextPage(e);
             }}

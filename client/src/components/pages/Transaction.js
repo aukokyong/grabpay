@@ -70,9 +70,10 @@ const Transaction = (props) => {
       </Table>
 
       <Row className="justify-content-center mb-5 mt-5">
-        <Col sm="auto">
+        <Col xs="auto">
           <Button
             name="balance"
+            className="mb-3 mt-3"
             onClick={(e) => {
               handleClickNextPage(e);
             }}
@@ -80,9 +81,10 @@ const Transaction = (props) => {
             View Account Balance
           </Button>
         </Col>
-        <Col sm="auto">
+        <Col xs="auto">
           <Button
             name="transfer"
+            className="mb-3 mt-3"
             onClick={(e) => {
               handleClickNextPage(e);
             }}

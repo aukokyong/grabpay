@@ -29,17 +29,18 @@ const Welcome = (props) => {
 
   return (
     <Container>
-      <Row className="justify-content-center mb-5">
-        <h1>Welcome {props.userInfo.username}</h1>
-      </Row>
-      <Row className="justify-content-center mb-5">
-        <h1>What would you like to do today?</h1>
-      </Row>
+      {/* <Row className="justify-content-center mb-5"> */}
+      <h1 className="text-center mb-5">Welcome {props.userInfo.username}</h1>
+      {/* </Row> */}
+      {/* <Row className="justify-content-center mb-5"> */}
+      <h1 className="text-center mb-5">What would you like to do today?</h1>
+      {/* </Row> */}
 
       <Row className="justify-content-center mb-5">
-        <Col sm="auto">
+        <Col xs="auto">
           <Button
             name="balance"
+            className="mb-3 mt-3"
             onClick={(e) => {
               handleClickNextPage(e);
             }}
@@ -47,9 +48,10 @@ const Welcome = (props) => {
             View Account Balance
           </Button>
         </Col>
-        <Col sm="auto">
+        <Col xs="auto">
           <Button
             name="transaction"
+            className="mb-3 mt-3"
             onClick={(e) => {
               handleClickNextPage(e);
             }}
@@ -57,9 +59,10 @@ const Welcome = (props) => {
             View Transaction History
           </Button>
         </Col>
-        <Col sm="auto">
+        <Col xs="auto">
           <Button
             name="transfer"
+            className="mb-3 mt-3"
             onClick={(e) => {
               handleClickNextPage(e);
             }}
