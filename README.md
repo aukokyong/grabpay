@@ -1,4 +1,5 @@
 # GrabPay
+A wallet app built using MERN stack.
 
 # Introduction
 Grab wants to provide a mobile wallet “GrabPay” service where every user can hold funds in their wallets in SGD.
@@ -22,6 +23,7 @@ Design a new HTTP based GrabPay service which should expose APIs such that users
     b. All assumptions <br>
     c. Steps to run the application
 3. Appropriate test cases
+
 <br>
 <br>
 <hr>
@@ -78,3 +80,10 @@ Design a new HTTP based GrabPay service which should expose APIs such that users
     a) `cd client` <br>
     b) `npm install` <br>
     c) `npm run start` <br>
+
+
+# Tech Stack
+- MongoDB
+- Express.js
+- ReactJS
+- Node.js
