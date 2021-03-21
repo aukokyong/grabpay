@@ -1,15 +1,21 @@
+import dayjs from "dayjs";
+
 const DetailsRow = (props) => {
   // console.log(props);
+
+  const date = dayjs(props.transaction.createdAt).format("DD/MM/YYYY");
 
   const Debit = () => {
     return (
       <>
-        <td>{props.index}</td>
-        <td>{props.transaction.createdAt}</td>
-        <td>{props.transaction.creditorUsername}</td>
-        <td>{props.transaction.description}</td>
-        <td></td>
-        <td>{(props.transaction.transactionAmount_cents / 100).toFixed(2)}</td>
+        <td className="text-center">{props.index}</td>
+        <td className="text-center">{date}</td>
+        <td className="text-center">{props.transaction.creditorUsername}</td>
+        <td className="text-center">{props.transaction.description}</td>
+        <td className="text-center"></td>
+        <td className="text-center">
+          {(props.transaction.transactionAmount_cents / 100).toFixed(2)}
+        </td>
       </>
     );
   };
@@ -17,12 +23,14 @@ const DetailsRow = (props) => {
   const Credit = () => {
     return (
       <>
-        <td>{props.index}</td>
-        <td>{props.transaction.createdAt}</td>
-        <td>{props.transaction.debtorUsername}</td>
-        <td>{props.transaction.description}</td>
-        <td>{(props.transaction.transactionAmount_cents / 100).toFixed(2)}</td>
-        <td></td>
+        <td className="text-center">{props.index}</td>
+        <td className="text-center">{date}</td>
+        <td className="text-center">{props.transaction.debtorUsername}</td>
+        <td className="text-center">{props.transaction.description}</td>
+        <td className="text-center">
+          {(props.transaction.transactionAmount_cents / 100).toFixed(2)}
+        </td>
+        <td className="text-center"></td>
       </>
     );
   };
