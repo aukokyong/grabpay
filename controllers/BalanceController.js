@@ -20,7 +20,7 @@ router.get("/:id", (req, res) => {
 
 router.get("/update/:id", (req, res) => {
   const id = req.params.id;
-  console.log(id);
+  // console.log(id);
 
   Transaction.aggregate()
     .match({ creditorID: id })
@@ -40,12 +40,12 @@ router.get("/update/:id", (req, res) => {
           },
         })
         .exec((err, debit) => {
-          console.log(credit);
+          // console.log(credit);
           const totalCredit = credit.length === 0 ? 0 : credit[0].totalCredit;
           const totalDebit = debit.length === 0 ? 0 : debit[0].totalDebit;
-          console.log(totalCredit - totalDebit);
-          console.log(totalCredit);
-          console.log(totalDebit);
+          // console.log(totalCredit - totalDebit);
+          // console.log(totalCredit);
+          // console.log(totalDebit);
 
           User.findByIdAndUpdate(
             { _id: id },

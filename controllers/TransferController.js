@@ -5,7 +5,7 @@ const Transaction = require("../models/TransactionSchema");
 
 // Check if receiver is valid
 router.post("/check", (req, res) => {
-  console.log(req.body);
+  // console.log(req.body);
   User.findOne(req.body, (err, user) => {
     if (err) {
       console.log(err);
@@ -42,15 +42,11 @@ router.post("/new", (req, res) => {
             res.status(500).send("Database error");
           } else {
             console.log("Transaction created");
-            console.log(user);
-
             updateBalance(user.debtorID);
             updateBalance(user.creditorID);
-
             res.status(200).send("success");
           }
         });
-        // updateBalance(transactionData.creditorID);
       }
     }
   );
@@ -75,12 +71,12 @@ const updateBalance = (id) => {
           },
         })
         .exec((err, debit) => {
-          console.log(credit);
+          // console.log(credit);
           const totalCredit = credit.length === 0 ? 0 : credit[0].totalCredit;
           const totalDebit = debit.length === 0 ? 0 : debit[0].totalDebit;
-          console.log(totalCredit - totalDebit);
-          console.log(totalCredit);
-          console.log(totalDebit);
+          // console.log(totalCredit - totalDebit);
+          // console.log(totalCredit);
+          // console.log(totalDebit);
 
           User.findByIdAndUpdate(
             { _id: id },
