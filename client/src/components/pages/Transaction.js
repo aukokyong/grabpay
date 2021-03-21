@@ -24,7 +24,7 @@ const Transaction = (props) => {
       .catch((error) => {
         console.log(error);
       });
-  }, []);
+  }, [props.userInfo._id]);
 
   const handleClickNextPage = (event) => {
     console.log(event.target.name);
@@ -47,12 +47,12 @@ const Transaction = (props) => {
       <Table striped bordered hover>
         <thead>
           <tr>
-            <th>S/N</th>
-            <th>Date</th>
-            <th>Transaction</th>
-            <th>Description</th>
-            <th>Credit</th>
-            <th>Debit</th>
+            <th className="text-center">S/N</th>
+            <th className="text-center">Date</th>
+            <th className="text-center">Transaction</th>
+            <th className="text-center">Description</th>
+            <th className="text-center">Credit</th>
+            <th className="text-center">Debit</th>
           </tr>
         </thead>
         <tbody>

@@ -21,7 +21,7 @@ const Welcome = (props) => {
       .catch((error) => {
         console.log(error);
       });
-  }, []);
+  }, [props.userInfo._id]);
 
   const handleClickNextPage = (event) => {
     console.log(event.target.name);

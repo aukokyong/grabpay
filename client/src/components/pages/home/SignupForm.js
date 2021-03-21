@@ -21,14 +21,14 @@ const SignupForm = (props) => {
       .post("/user/new", formData)
       .then((response) => {
         console.log(response.data);
-        if (response.data == "success") {
+        if (response.data === "success") {
           setFormData({ username: "", password: "" });
           setIsAccCreated("Account created successfully. Please login now.");
         }
       })
       .catch((error) => {
         console.log(error.response);
-        if (error.response.status == 401) {
+        if (error.response.status === 401) {
           setErrorMsg({ msg: error.response.data });
         }
       });
