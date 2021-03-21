@@ -40,29 +40,29 @@ Design a new HTTP based GrabPay service which should expose APIs such that users
 ## View Transaction History Page
 1. Display user's transaction history
 2. Allow user to filter based on transaction date/month
+3. Display the total amount for credit and debit
 
-## Sending payment
-1. Check if receiver has an account
+## Send Payment Page
+1. Check if receiver has an account. If the receiver has no account, user is unable to transfer.
 2. Allow user to input their description of their transaction
-3. Update user's and receiver's account balance
+3. Update user's and receiver's account balance after each transaction
+4. Ensure user cannot send to self
 
 # Assumptions
-
-## General
 1. User input with expected data types
+2. User can transfer money even if their account balance is less than the amount they are transferring (overdraft)
+3. App is secure
 
-
-
-# Steps to run application locally with local database
+# Steps to run application locally
 1. Install Node.js [https://nodejs.org/en/]
 2. Install MongoDB [https://docs.mongodb.com/manual/administration/install-community/]
 3. Create a new `.env` file in the main directory. 
     
     Add these environment variables into the file and replace `<value>` with the relevant values:
 
-    `MONGODB_URI=<mongodb URI>` <br>
-    `SECRET=<secret key>` <br>
-    `PORT=<port>`
+    `MONGODB_URI=<mongodb URI>` (only for cloud server) <br> 
+    `SECRET=<secret key>` (any string character) <br>
+    `PORT=<port>` (default value is 4000)
 
 4. Starting up Express.js server.
 
