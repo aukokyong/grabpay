@@ -51,7 +51,7 @@ const Transfer = (props) => {
         })
         .catch((error) => {
           console.log(error.response);
-          if (error.response.status == 401) {
+          if (error.response.status === 401) {
             setIsReceiverValid(error.response.data.status);
             setErrorMsg({ user: error.response.data.msg });
           }
@@ -93,9 +93,7 @@ const Transfer = (props) => {
 
   return (
     <Container>
-      <Row className="justify-content-center mb-5">
-        <h1>Send Payment</h1>
-      </Row>
+      <h1 className="text-center mb-5">Send Payment</h1>
 
       <Row className="justify-content-center mb-3">
         Creditor's Username:

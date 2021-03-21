@@ -40,12 +40,8 @@ const Balance = (props) => {
 
   return (
     <Container>
-      <Row className="justify-content-center">
-        <h1>Account Balance:</h1>
-      </Row>
-      <Row className="justify-content-center mb-5">
-        <h1>SGD ${accountBalance}</h1>
-      </Row>
+      <h1 className="text-center">Account Balance:</h1>
+      <h1 className="text-center mb-5">SGD ${accountBalance}</h1>
 
       <Row className="justify-content-center mb-5">
         <Col xs="auto">

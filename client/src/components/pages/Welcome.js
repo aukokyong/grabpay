@@ -41,12 +41,8 @@ const Welcome = (props) => {
 
   return (
     <Container>
-      {/* <Row className="justify-content-center mb-5"> */}
       <h1 className="text-center mb-5">Welcome {props.userInfo.username}</h1>
-      {/* </Row> */}
-      {/* <Row className="justify-content-center mb-5"> */}
       <h1 className="text-center mb-5">What would you like to do today?</h1>
-      {/* </Row> */}
 
       <Row className="justify-content-center mb-5">
         <Col xs="auto">
