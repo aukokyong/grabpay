@@ -23,7 +23,7 @@ const Transaction = (props) => {
     axios
       .get("/transaction/" + props.userInfo._id)
       .then((response) => {
-        console.log(response);
+        // console.log(response);
         setTransactionDetails(response.data);
       })
       .catch((error) => {

@@ -4,7 +4,7 @@ import { Container, Row, Col, Button } from "react-bootstrap";
 import axios from "axios";
 
 const Welcome = (props) => {
-  console.log(props);
+  // console.log(props);
 
   const [nextPage, setNextPage] = useState({
     balance: false,

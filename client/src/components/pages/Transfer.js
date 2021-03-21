@@ -40,7 +40,7 @@ const Transfer = (props) => {
     console.log("clicked");
     event.preventDefault();
 
-    if (formData.creditorUsername === props.userInfo.username) {
+    if (formData.creditorUsername === props.userInfo.username + "") {
       setErrorMsg({ user: "Unable to send to this account" });
     } else {
       axios

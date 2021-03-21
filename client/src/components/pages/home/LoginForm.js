@@ -34,13 +34,12 @@ const LoginForm = (props) => {
 
   return (
     <Container>
-      <Row className="justify-content-center mb-3">
-        <h1>Login</h1>
-      </Row>
+      <h1 className="text-center mb-3">Login</h1>
       <form>
         <Row className="justify-content-center mb-3">
           Username:
           <input
+            type="number"
             name="username"
             value={formData.username}
             placeholder="Phone Number"

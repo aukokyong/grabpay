@@ -10,8 +10,7 @@ import axios from "axios";
 function App() {
   const [isLoggedin, setIsloggedin] = useState(false);
   const [userInfo, setUserInfo] = useState("No info");
-
-  console.log(userInfo);
+  // console.log(userInfo);
 
   useEffect(() => {
     axios

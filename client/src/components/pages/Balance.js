@@ -15,7 +15,7 @@ const Balance = (props) => {
     axios
       .get("/balance/" + props.userInfo._id)
       .then((response) => {
-        console.log(response.data);
+        // console.log(response.data);
         setAccountBalance(
           (response.data.accountBalance_cents / 100).toFixed(2)
         );
